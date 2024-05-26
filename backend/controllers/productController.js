@@ -1,4 +1,5 @@
 import { catchAsyncError } from "../middleware/catchAsyncError.js";
+import { isAuthenticated } from "../middleware/isAuth.js";
 import { Product } from "../Models/productModel.js";
 import ErrorMiddleware from "../utils/erroMiddleware.js";
 import AppFeatures from "../utils/features.js";
@@ -6,7 +7,7 @@ import AppFeatures from "../utils/features.js";
 
 // Create Product ---- Admin
 
-export const createProduct = catchAsyncError(async (req, res) => {
+export const createProduct = catchAsyncError( async (req, res) => {
   const products = await Product.create(req.body);
 
   res.status(200).json({
