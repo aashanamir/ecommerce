@@ -21,13 +21,13 @@ export const createProduct = catchAsyncError( async (req, res) => {
 
 export const getAllProducts = catchAsyncError(async (req, res) => {
 
-  const Features = new AppFeatures(Product.find() , req.query).search().pagination(5).filter();
+  const Features = new AppFeatures(Product.find() , req.query).search().pagination().filter();
 
   const products = await Features.query;
 
   res.status(200).json({
     success: true,
-    message: products,
+    products,
   })
 }
 );

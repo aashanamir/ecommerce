@@ -14,6 +14,7 @@ export const sendToken = async (user , statusCode , res) => {
 ).json({
     success : true,
     token,
+    user
   })
 
 }

@@ -17,8 +17,8 @@ export const registerUser = catchAsyncError(async (req , res , next) => {
   }
 
   const user = await User.create({name , email ,password , avatar : {
-    public_id : "kk",
-    url : "url",
+    public_id : req.file.filename,
+    url : req.file.path ,
   }});
 
   sendToken(user , 201 , res);
@@ -151,7 +151,6 @@ export const getProfile = catchAsyncError(async (req , res , next) => {
   
   const user = await User.findById(req.user.id);
 
-
   res.status(200).json({
     success : true,
     user,
@@ -163,11 +162,22 @@ export const getProfile = catchAsyncError(async (req , res , next) => {
 // Update Profile ----- User
 
 export const updateProfile = catchAsyncError(async (req , res , next) => {
-
-  const user = await User.findByIdAndUpdate(req.user.id , {
+  
+  const user = await User.findByIdAndUpdate(req.user.id , req.file ? ({
     name : req.body.name,
     email : req.body.email,
-  } , {new : true, });
+    
+     avatar : {
+        public_id : req.file.filename,
+        url : req.file.path ,
+      }
+    
+    
+  }) : ({
+    name : req.body.name,
+    email : req.body.email,
+    
+  }) , {new : true, });
 
   await user.save();
 

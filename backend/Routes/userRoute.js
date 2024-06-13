@@ -1,11 +1,11 @@
 import express from "express";
 import { loginUser, logoutUser, registerUser, forgetPassword, resetPassword, updateProfile, getProfile , updatePassword, getAllUsers, getUserDetails, updateUserDetails, deleteUserDetails } from "../controllers/userController.js";
 import {isAuthenticated , checkIsAdmin} from "../middleware/isAuth.js"
+import { uploadUserImage } from "../middleware/multerMiddleware.js";
 
 const router = express.Router();
 
-
-router.route("/register").post(registerUser);
+router.route("/register").post( uploadUserImage.single("file") ,  registerUser);
 
 router.route("/login").post(loginUser);
 
@@ -17,7 +17,7 @@ router.route("/reset/:token").get(resetPassword);
 
 router.route("/me").get( isAuthenticated , getProfile);
 
-router.route("/me/update").put( isAuthenticated , updateProfile);
+router.route("/me/update").patch(isAuthenticated , uploadUserImage.single("file") , updateProfile);
 
 router.route("/me/updatepassword").put( isAuthenticated , updatePassword);
 
