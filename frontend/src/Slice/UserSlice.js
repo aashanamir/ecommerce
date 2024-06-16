@@ -24,20 +24,26 @@ export const { setStatus, setUser } = userSlice.actions;
 
 export default userSlice.reducer;
 
-// Actions
+/*
+************
+************
+Actions
+************
+************
+*/
 
 // SignUp User
+
 export function SignUpUser(formData) {
-  return async function SignUpUserThunk(dispatch , getState) {
+  return async function SignUpUserThunk(dispatch, getState) {
     dispatch(setStatus("loading"));
     try {
-      const { data } = await axios.post(BASEURL + "v1/api/register",  formData , {
+      const { data } = await axios.post(BASEURL + "v1/api/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        },
-        withCredentials: true,
+        }, withCredentials : true,
       });
-      
+
       dispatch(setUser(data));
       dispatch(setStatus("idle"));
 
@@ -52,6 +58,7 @@ export function SignUpUser(formData) {
 
 
 // Fetch user
+
 export function FetchUser() {
   return async function FetchUserThunk(dispatch) {
     dispatch(setStatus("loading"));
@@ -60,7 +67,7 @@ export function FetchUser() {
         withCredentials: true,
       });
       dispatch(setUser(data));
-    dispatch(setStatus("idle"));
+      dispatch(setStatus("idle"));
     } catch (error) {
       setStatus("error");
     }
@@ -69,6 +76,7 @@ export function FetchUser() {
 
 
 // Login User
+
 export function LoginUser(email, password) {
   return async function LoginUserThunk(dispatch, getState) {
     dispatch(setStatus("loading"));
@@ -90,17 +98,18 @@ export function LoginUser(email, password) {
 }
 
 // Logout user
+
 export function logoutUser() {
   return async function logoutUserThunk(dispatch) {
     dispatch(setStatus("loading"));
     try {
-      
-    const { data } = await axios.get(BASEURL + "v1/api/logout", {
-      withCredentials: true,
-    });
-    dispatch(setUser(data));
-    dispatch(setStatus("idle"));
-    alert(data.message);
+
+      const { data } = await axios.get(BASEURL + "v1/api/logout", {
+        withCredentials: true,
+      });
+      dispatch(setUser(data));
+      dispatch(setStatus("idle"));
+      alert(data.message);
     } catch (error) {
       console.warn(error.response.data.message);
       alert(error.response.data.message);
@@ -113,26 +122,28 @@ export function logoutUser() {
 
 // Update User
 
-export function updateUser(formData){
-  return async function updateUserFetch(dispatch){
+export function updateUser(formData) {
+  return async function updateUserFetch(dispatch) {
     dispatch(setStatus("loading"));
     try {
-      const {data} = await axios.patch(
+      const { data } = await axios.patch(
         'http://localhost:5000/v1/api/me/update',
         formData,
         {
           headers: {
-          'Content-Type': 'multipart/form-data',
+            'Content-Type': 'multipart/form-data',
 
           },
-          withCredentials : true,
+          withCredentials: true,
         });
-        console.log(data);
-        dispatch(setUser(data));
-        dispatch(setStatus("idle"));
+      console.log(data);
+      dispatch(setUser(data));
+      dispatch(setStatus("idle"));
     } catch (error) {
       setStatus("error");
       alert(error.response.data.message)
     }
   }
 }
+
+

@@ -1,0 +1,63 @@
+/* src/components/AdminPanel.css */
+:root {
+  --primary-color: #ff6600; /* Adjust this to your theme color */
+  --secondary-color: #333;
+  --background-color: #f4f4f4;
+  --card-background-color: #f9f9f9;
+  --text-color: #333;
+  --header-color: white;
+  --hover-color: #ff8533; /* Slightly lighter shade of primary color */
+}
+
+.admin-layout {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  }
+  
+  
+.admin-container {
+  display: flex;
+  flex: 1;
+  background-color: white;
+  border-radius: 18px;
+  padding: 8px;
+  overflow: scroll;
+  }
+
+.admin-content {
+  position: relative;
+  border-radius: 40px;
+  flex: 1;
+  padding: 1rem;
+  background-color: var(--header-color);
+
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: 1rem; */
+}
+
+.card {
+  background-color: var(--card-background-color);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.card p {
+  margin: 0.5rem 0 0;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}

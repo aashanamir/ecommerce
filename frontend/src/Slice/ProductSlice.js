@@ -5,6 +5,7 @@ export const productSlice = createSlice({
   initialState : {
     productStatus : "idle",
     data : [],
+    productDetail : {},
   },
 
   reducers : {
@@ -14,10 +15,13 @@ export const productSlice = createSlice({
     setStatus : (state , action) => {
       state.productStatus = action.payload;
     },
+    setProductDetail : (state , action) => {
+      state.productDetail = action.payload;
+    }
   }
 });
 
-export const {setProduct , setStatus} = productSlice.actions;
+export const {setProduct , setStatus , setProductDetail} = productSlice.actions;
 
 export default productSlice.reducer;
 
@@ -46,7 +50,7 @@ export function fetchProductDetail (id){
       console.log(id);
       const res = await fetch(`http://localhost:5000/v1/api/product/${id}`);
       const data = await res.json();
-      dispatch(setProduct(data));      
+      dispatch(setProductDetail(data));      
       dispatch(setStatus("idle"));
     } catch (error) {
       console.log(error);

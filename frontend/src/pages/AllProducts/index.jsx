@@ -10,25 +10,24 @@ import { Helmet } from "react-helmet";
 const AllProductsPage = () => {
   const dispatch = useDispatch();
   const { data, productStatus } = useSelector((state) => state.Products);
-  const products = data.products;
-  console.log(products , productStatus);
+  
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  return (
+  return productStatus === "loading" ? (<Loading/>) : (
   <div style={{marginTop : 20}}>
     <Helmet>
-      <title>{products[0].name} | Echo Store</title>
+      <title>All Products | Echo Store</title>
         <meta name="description" content="Welcome to E-Shop, your one-stop shop for all things great." />
       </Helmet>
     <Category/>
     <div className="all-products-page">
-      {productStatus === 'loading' ? (<Loading/>) : (<div className="product-grid">
-        {products?.map((product) => (
-          <ProductCard key={product.id} product={product} />
+      <div className="product-grid">
+        {data.products?.map((product) => (
+          <ProductCard key={product?.id} product={product} />
         ))}
-      </div>)} 
+      </div>
       
     </div>
     </div>

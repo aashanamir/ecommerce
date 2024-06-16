@@ -1,0 +1,84 @@
+.user-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  padding: 8px;
+  margin-bottom: 18px;
+}
+
+.user-list-table th, .user-list-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-list-table th {
+  background-color: #ff6600;
+  color: white;
+}
+
+td img{
+  width: 20px;
+  height: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-button.preview {
+  background-color: #4caf50;
+  color: white;
+}
+
+.action-button.edit {
+  background-color: #ff9800;
+  color: white;
+}
+
+.action-button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.action-button svg {
+  margin-right: 4px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.edit-user-menu{
+    list-style: none;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 2px 0 grey;
+    /* padding: 11px; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-user-menu li{
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.edit-user-menu li:hover{
+  background-color: rgb(212, 212, 212);
+  cursor: pointer;
+}

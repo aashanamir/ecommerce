@@ -1,0 +1,28 @@
+.not-mobile-access-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Replace with your theme's background color */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.not-mobile-access-icon {
+  font-size: 100px;
+  color: #ff6600; /* Replace with your theme's primary color */
+  margin-bottom: 20px;
+}
+
+.not-mobile-access-container h1 {
+  font-size: 24px;
+  color: #333; /* Replace with your theme's text color */
+  margin-bottom: 10px;
+}
+
+.not-mobile-access-container p {
+  font-size: 18px;
+  color: #666; /* Replace with your theme's secondary text color */
+}

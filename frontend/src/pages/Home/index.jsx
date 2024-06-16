@@ -18,6 +18,7 @@ const HomePage = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  
   return productStatus === "loading" ? (
     <Loading />
   ) : (
@@ -32,8 +33,8 @@ const HomePage = () => {
       <section className="product-section">
         <h2>Latest Products</h2>
         <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
+          {products.map((product , index) => (
+            <ProductCard key={index} product={product} />
           ))}
         </div>
       </section>

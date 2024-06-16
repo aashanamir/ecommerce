@@ -9,17 +9,30 @@ import Profile from './pages/auth/Profile';
 import EditProfile from "./pages/auth/Edit Profile"
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/Signup';
+import AdminHome from "./pages/admin/Home"
+import Users from "./pages/admin/Users"
+import Products from "./pages/admin/Products";
+import AddProducts from "./pages/admin/addProducts";
+import EditProducts from "./pages/admin/editProducts";
+import UserDetail from "./pages/admin/userDetail"
+import AdminProductDetail from "./pages/admin/productDetail"
 import { FetchUser } from './Slice/UserSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import NotMobileAccess from './components/notMobile';
+import { fetchProducts } from './Slice/ProductSlice';
+
 
 
 const App = () => {
   const dispatch = useDispatch()
+  const {userInfo} = useSelector(state => state.user);
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-  // For Fetching User For the first time
   useEffect(()=>{
     dispatch(FetchUser());
+    dispatch(fetchProducts());
   }, [dispatch])
 
   return (
@@ -35,6 +48,28 @@ const App = () => {
               <Route path='/profile' Component={Profile }/>
               <Route path='/edit-profile' Component={EditProfile }/>
               <Route path='/*' Component={PageNotFound }/>
+              { userInfo?.role === "admin" &&
+              <>  
+                {
+                  isMobile ? (<Route path='/admin*' Component={NotMobileAccess }/>
+                  ) : (
+                  <>
+                    <Route path='/admin' Component={AdminHome}/>
+                    {/* Users */}
+                    <Route path='/admin/users' Component={Users}/>
+                    <Route path='/admin/user/info/:id' Component={UserDetail}/>
+                    {/* Products */}
+                    <Route path='/admin/products' Component={Products}/>
+                    <Route path='/admin/product/add' Component={AddProducts}/>
+                    <Route path='/admin/product/edit/:id' Component={EditProducts}/>
+                    <Route path='/admin/product/info/:id' Component={AdminProductDetail}/>
+                  </>
+                  )
+                }
+                
+              </>
+             
+              }
             </Routes>
           <Footer />
         </Router>
