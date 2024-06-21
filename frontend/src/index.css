@@ -13,3 +13,11 @@
   background-color: #f8f8f8;
 
 }
+
+@media (max-width: 768px) {
+
+  .app{
+    width: 100%;
+  }
+
+}
