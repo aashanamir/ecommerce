@@ -3,6 +3,7 @@ import Navbar from './components/header';
 import Footer from './components/footer';
 import HomePage from './pages/Home/index';
 import GetAllProducts from './pages/AllProducts';
+import  Cart  from "./pages/Cart";
 import ProductDetail from './components/ProductDetail';
 import PageNotFound from './components/Not Found';
 import Profile from './pages/auth/Profile';
@@ -43,6 +44,7 @@ const App = () => {
               <Route path='/' Component={HomePage }/>
               <Route path='/products' Component={GetAllProducts }/>
               <Route path='/product/:id' Component={ProductDetail }/>
+              <Route path='/cart' Component={Cart }/>
               <Route path='/login' Component={Login }/>
               <Route path='/signup' Component={SignUp }/>
               <Route path='/profile' Component={Profile }/>

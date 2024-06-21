@@ -1,21 +1,33 @@
 import React from 'react'
 import "./style.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import { fetchProducts } from '../../Slice/ProductSlice';
+const Index = () => {
 
-const index = ({category}) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const categoryHandler = (name , category) => {
+    console.log(name);
+    navigate("/products");
+    dispatch(fetchProducts(category));
+
+
+  }
 
   const categoreis = [
     {
       src: 'https://cdn-icons-png.flaticon.com/128/10951/10951869.png',
       alt: 'Slide 1',
       name : "All Products",
-      path : "/products"
+      path : ""
     },
+
     {
       src: 'https://cdn-icons-png.flaticon.com/128/11078/11078771.png',
       alt: 'Slide 1',
       name : "Mobiles",
-      path : "/"
+      path : "Mobile"
     },
     {
       src: 'https://cdn-icons-png.flaticon.com/128/123/123400.png',
@@ -33,26 +45,26 @@ const index = ({category}) => {
       src: 'https://cdn-icons-png.flaticon.com/128/2681/2681760.png',
       alt: 'Slide 1',
       name : "Man",
-      path : "/"
+      path : "man"
     },
     {
       src: 'https://cdn-icons-png.flaticon.com/128/2763/2763444.png',
       alt: 'Slide 1',
       name : "Woman",
-      path : "/"
+      path : "woman"
     },
     
   ];
   return (
     <div className='category-card-container'>
       {
-        categoreis.map((category)=>(<Link to={category?.path || "/"} className="category-card">
+        categoreis.map((category)=>(<div key={category.name} onClick={()=>categoryHandler(category.name , category.path)} className="category-card">
           <img src={category?.src } alt={category?.alt} />
           <span>{ category?.name || "Category Name"}</span>
-          </Link>))
+          </div>))
       }
     </div>
   )
 }
 
-export default index
+export default Index

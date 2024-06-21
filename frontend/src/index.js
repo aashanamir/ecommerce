@@ -7,12 +7,14 @@ import ProductSlice from './Slice/ProductSlice';
 import UserSlice from './Slice/UserSlice';
 import { Provider } from 'react-redux';
 import adminSlice from './Slice/adminSlice';
+import cartSlice from './Slice/cartSlice';
 
 const store = configureStore({
   reducer:{
     Products : ProductSlice,
     user : UserSlice,
     admin : adminSlice,
+    cart : cartSlice,
   }
 })
 

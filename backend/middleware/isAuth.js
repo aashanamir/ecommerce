@@ -20,6 +20,7 @@ export const isAuthenticated = catchAsyncError(async(req , res , next)=> {
 
   req.user = user;
 
+  
   next();
 
 });

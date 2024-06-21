@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import {BASEURL} from "../API/BaseUrl"
 
 export const productSlice = createSlice({
   name : "Product",
@@ -28,12 +30,18 @@ export default productSlice.reducer;
 
 // Thunk
 
-export function fetchProducts (){
+export function fetchProducts (category="" , currentPage=""){
   return async function fetchProductsThunk(dispatch , getState){
+    console.log(category , currentPage);
+    let url = BASEURL + "v1/api/products?";
+    if (category) {
+      url += `category=${category}`;
+    }
+
+    console.log(url);
    dispatch(setStatus("loading"));
     try {
-      const res = await fetch('http://localhost:5000/v1/api/products');
-      const data = await res.json();
+      const {data} = await axios.get(url); 
       dispatch(setProduct(data));      
      dispatch(setStatus("idle"));
     } catch (error) {

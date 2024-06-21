@@ -43,7 +43,7 @@ export function SignUpUser(formData) {
           'Content-Type': 'multipart/form-data',
         }, withCredentials : true,
       });
-
+      console.log(data);
       dispatch(setUser(data));
       dispatch(setStatus("idle"));
 

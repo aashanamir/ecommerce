@@ -1,5 +1,4 @@
 import { catchAsyncError } from "../middleware/catchAsyncError.js";
-import { isAuthenticated } from "../middleware/isAuth.js";
 import { Product } from "../Models/productModel.js";
 import ErrorMiddleware from "../utils/erroMiddleware.js";
 import AppFeatures from "../utils/features.js";
@@ -44,6 +43,9 @@ export const createProduct = catchAsyncError(async (req, res) => {
 
 export const getAllProducts = catchAsyncError(async (req, res) => {
 
+  const productsCount = await Product.countDocuments();
+  const productPerpage = 1;
+
   const Features = new AppFeatures(Product.find(), req.query).search().pagination().filter();
 
   const products = await Features.query;
@@ -51,6 +53,8 @@ export const getAllProducts = catchAsyncError(async (req, res) => {
   res.status(200).json({
     success: true,
     products,
+    productPerpage,
+    productsCount,
   })
 }
 );

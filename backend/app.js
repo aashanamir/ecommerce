@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import { connectDb } from "./config/database.js";
 import products from "./Routes/productRoute.js";
 import users from "./Routes/userRoute.js";
+import orders from "./Routes/orderRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -15,9 +16,9 @@ config({
 });
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: process.env.FRONTEND_URL, 
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Allow cookies and other credentials to be sent
+  credentials: true, 
   optionsSuccessStatus: 204,
 };
 
@@ -32,6 +33,7 @@ app.use(express.static('public'));
 // Routes
 app.use("/v1/api" ,products);
 app.use("/v1/api" ,users);
+app.use("/v1/api" ,orders);
 
 
 export default app;
