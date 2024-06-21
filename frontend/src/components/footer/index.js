@@ -1,6 +1,6 @@
-// src/components/Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope, FaPhone } from 'react-icons/fa';
 import './style.css';
 
 const Footer = () => {
@@ -13,9 +13,9 @@ const Footer = () => {
             E-Shop is your one-stop shop for all things great. We offer a wide range of products to meet all your needs.
           </p>
           <div className="socials">
-            <a href="https://facebook.com" className="social-link">Facebook</a>
-            <a href="https://twitter.com" className="social-link">Twitter</a>
-            <a href="https://instagram.com" className="social-link">Instagram</a>
+            <a href="https://facebook.com" className="social-link"><FaFacebook /></a>
+            <a href="https://twitter.com" className="social-link"><FaTwitter /></a>
+            <a href="https://instagram.com" className="social-link"><FaInstagram /></a>
           </div>
         </div>
         <div className="footer-section links">
@@ -30,9 +30,9 @@ const Footer = () => {
         </div>
         <div className="footer-section contact">
           <h2 className="footer-title">Contact Us</h2>
+          <p className="footer-text"><FaEnvelope /> support@eshop.com</p>
+          <p className="footer-text"><FaPhone /> +1 123 456 7890</p>
           <p className="footer-text">123 E-Shop St, Commerce City, CO 12345</p>
-          <p className="footer-text">Email: support@eshop.com</p>
-          <p className="footer-text">Phone: +1 123 456 7890</p>
         </div>
       </div>
       <div className="footer-bottom">
