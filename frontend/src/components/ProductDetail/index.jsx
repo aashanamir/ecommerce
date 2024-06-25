@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetail } from '../../Slice/ProductSlice';
@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { productDetail, productStatus } = useSelector(state => state.Products);
+  const { items:cartItems } = useSelector(state => state.cart);
   const {userInfo} = useSelector(state => state.user)
   const { items } = useSelector(state => state.cart);
   const { product } = productDetail;
@@ -76,13 +77,16 @@ const ProductDetails = () => {
         <div className="product-info">
           <h1>{product?.name || ""}</h1>
           <p>Rs: <span className='price'>{product?.price.toFixed(2) || ""}</span></p>
-          <p>{product?.description || ""}</p>
+          <p className='product-detail-description'>{product?.description || ""}</p>
           <div className="quantity-controls">
             <button onClick={decreaseQuantity} className="quantity-btn">-</button>
             <span>{quantity}</span>
             <button onClick={increaseQuantity} className="quantity-btn">+</button>
           </div>
           <button onClick={addToCartHandler} className="add-to-cart-btn">Add to Cart</button>
+          {
+            cartItems?.length > 0 ? <Link to={"/cart"}>View Cart</Link> : ""
+          }
         </div>
       </div>
     </div>

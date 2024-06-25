@@ -1,4 +1,89 @@
-/* src/pages/AllProductsPage.css */
 .all-products-page {
   padding: 20px;
+}
+
+.paginationBox{
+  width: 24%;
+  margin: auto;
+}
+
+.css-rppfq7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  color: #fff;
+  background-color: #ff8833;
+}
+
+
+
+/* Category Card */
+
+.category-card-container{
+  background-color: white;
+  width: 70%;
+  padding: 8px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  margin: auto;
+  border-radius: 8px;
+  overflow: auto;
+  box-shadow: 0 0 2px 0 grey;
+
+}
+.category-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 4px;
+  width: 80px;
+  min-width: 60px;
+  padding: 4px 12px;
+  background-color: white;
+  font-size: 10px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0px 2px 2px 0 #888;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.category-card:hover{
+  background-color: #ff6600;
+  color: #ffff;
+}
+
+.category-card img{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+
+@media (max-width: 780px) {
+  .category-card-container {
+    width: 100%;
+    margin: 0;
+    padding: 4px 20px;
+    margin-top: 60px;
+    background-color: #ff6600;
+    justify-content: space-evenly;
+  }
+  
+  .category-card {
+    height: 70px;
+  }
+
+  .category-card span{
+    font-size: 10px;
+    text-align: center;
+    text-wrap: nowrap;
+  }
+
+  .category-card img {
+    width: 40px;
+    height: 40px;
+  }
 }

@@ -7,11 +7,11 @@ const Index = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const categoryHandler = (name , category) => {
-    console.log(name);
+
     navigate("/products");
     dispatch(fetchProducts(category));
-
 
   }
 
@@ -55,6 +55,8 @@ const Index = () => {
     },
     
   ];
+
+
   return (
     <div className='category-card-container'>
       {

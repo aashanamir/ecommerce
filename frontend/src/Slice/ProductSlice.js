@@ -30,15 +30,14 @@ export default productSlice.reducer;
 
 // Thunk
 
-export function fetchProducts (category="" , currentPage=""){
+export function fetchProducts (currentPage="" , category=""){
   return async function fetchProductsThunk(dispatch , getState){
-    console.log(category , currentPage);
-    let url = BASEURL + "v1/api/products?";
+    console.log(category);
+    let url = BASEURL + `v1/api/products?page=${currentPage}`;
     if (category) {
-      url += `category=${category}`;
+      url += `&category=${category}`;
     }
 
-    console.log(url);
    dispatch(setStatus("loading"));
     try {
       const {data} = await axios.get(url); 
@@ -55,8 +54,7 @@ export function fetchProductDetail (id){
   return async function productDetailThunk(dispatch , getState){
     try {
       dispatch(setStatus("loading"));
-      console.log(id);
-      const res = await fetch(`http://localhost:5000/v1/api/product/${id}`);
+      const res = await fetch(`${BASEURL}v1/api/product/${id}`);
       const data = await res.json();
       dispatch(setProductDetail(data));      
       dispatch(setStatus("idle"));

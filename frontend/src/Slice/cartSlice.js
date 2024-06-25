@@ -38,10 +38,15 @@ const cartSlice = createSlice({
         state.totalQuantity += (quantity - existingItem.quantity);
         existingItem.quantity = quantity;
       }
+    },
+
+    clearCart : (state , action) => {
+      state.items = [];
+      state.totalQuantity = 0;
     }
   }
 });
 
-export const { add, remove, updateQuantity } = cartSlice.actions;
+export const { add, remove, updateQuantity , clearCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

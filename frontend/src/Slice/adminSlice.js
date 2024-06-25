@@ -10,6 +10,7 @@ const adminSlice = createSlice({
     adminStatus : "idle",
     adminData : [],
     updateProduct : [],
+    adminOrders : [],
   },
 
   reducers : {
@@ -23,12 +24,16 @@ const adminSlice = createSlice({
 
     setProduct : (state , action) => {
       state.updateProduct = action.payload;
+    },
+
+    setOrders : (state , action) => {
+      state.adminOrders = action.payload;
     }
   }
 });
 
 
-export const {setData , setStatus } = adminSlice.actions;
+export const {setData , setStatus , setOrders } = adminSlice.actions;
 
 export default adminSlice.reducer;
   
@@ -134,13 +139,13 @@ export function addNewProduct(formData){
     const {data} = await axios.post(BASEURL + "v1/api/add-product" , formData , {
       headers: {
         'Content-Type': 'multipart/form-data',
-      }, withCredentials : true,
+      },withCredentials : true,
     });
-    dispatch(setStatus("idle"));
     dispatch(fetchProducts());
-    console.log(data);
+    dispatch(setStatus("idle"));
    } catch (error) {
      console.log(error);
+     alert(error.response.data.message);
    }
   }
 }
@@ -179,6 +184,55 @@ export function updateProductDetails(id , formData){
       dispatch(setProduct(data));
     } catch (error) {
       console.warn(error);
+    }
+  }
+}
+
+
+
+
+// Admin Orders
+
+
+export function getAllOrdersByAdmin(){
+  return async function getAllOrdersByAdminThunk(dispatch){
+    try {
+      const {data} = await axios.get(BASEURL + "v1/api/admin/order/allorders" , {
+        withCredentials : true,
+      });
+
+      dispatch(setOrders(data));
+    } catch (error) {
+      console.log(error);      
+    }
+  }
+}
+
+export function EditOrderStatusByAdmin(status , id){
+  return async function deleteOrderByAdminThunk(dispatch){
+    try {
+      const {data} = await axios.patch(BASEURL + "v1/api/admin/order/updateorder/" + id , {status} , {
+        withCredentials : true,
+      });
+      dispatch(getAllOrdersByAdmin());
+      alert("Order Updated Successfully");
+    } catch (error) {
+      alert(error.response.data.message);      
+      console.log(error);
+    }
+  }
+}
+
+export function deleteOrderByAdmin(id){
+  return async function deleteOrderByAdminThunk(dispatch){
+    try {
+      const {data} = await axios.delete(BASEURL + "v1/api/admin/order/deleteorder/" + id , {
+        withCredentials : true,
+      });
+      alert(data.message)
+      dispatch(getAllOrdersByAdmin());
+    } catch (error) {
+      console.log(error);      
     }
   }
 }

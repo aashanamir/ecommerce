@@ -4,6 +4,7 @@ import { connectDb } from "./config/database.js";
 import products from "./Routes/productRoute.js";
 import users from "./Routes/userRoute.js";
 import orders from "./Routes/orderRoute.js";
+import category from "./Routes/categoryRoute.js"
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -34,6 +35,6 @@ app.use(express.static('public'));
 app.use("/v1/api" ,products);
 app.use("/v1/api" ,users);
 app.use("/v1/api" ,orders);
-
+app.use("/v1/api" , category);
 
 export default app;

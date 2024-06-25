@@ -44,9 +44,9 @@ export const createProduct = catchAsyncError(async (req, res) => {
 export const getAllProducts = catchAsyncError(async (req, res) => {
 
   const productsCount = await Product.countDocuments();
-  const productPerpage = 1;
+  const productPerpage = 8;
 
-  const Features = new AppFeatures(Product.find(), req.query).search().pagination().filter();
+  const Features = new AppFeatures(Product.find(), req.query).search().pagination(productPerpage).filter();
 
   const products = await Features.query;
 

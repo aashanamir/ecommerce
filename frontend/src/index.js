@@ -8,6 +8,8 @@ import UserSlice from './Slice/UserSlice';
 import { Provider } from 'react-redux';
 import adminSlice from './Slice/adminSlice';
 import cartSlice from './Slice/cartSlice';
+import categorySlice from './Slice/categorySlice';
+import orderSlice from './Slice/orderSlice';
 
 const store = configureStore({
   reducer:{
@@ -15,6 +17,8 @@ const store = configureStore({
     user : UserSlice,
     admin : adminSlice,
     cart : cartSlice,
+    category : categorySlice,
+    order : orderSlice,
   }
 })
 

@@ -1,35 +1,42 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addNewProduct } from '../../../Slice/adminSlice';
-import './style.css';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewProduct } from "../../../Slice/adminSlice";
+import "./style.css";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  const { categories, status } = useSelector((state) => state.category);
 
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('category', category);
-    formData.append('price', price);
-    formData.append('description', description);
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("price", price);
+    formData.append("description", description);
     for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i]);
+      formData.append("files", files[i]);
     }
     dispatch(addNewProduct(formData));
+    setName("");
+    setCategory("");
+    setPrice("");
+    setDescription("");
+    setFiles([]);
+    setImagePreviews([]);
   };
 
   const changeHandler = (e) => {
     const selectedFiles = Array.from(e.target.files);
     setFiles(selectedFiles);
 
-    const filePreviews = selectedFiles.map(file => URL.createObjectURL(file));
+    const filePreviews = selectedFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews(filePreviews);
   };
 
@@ -50,13 +57,18 @@ const AddProduct = () => {
           </div>
           <div className="form-group">
             <label htmlFor="category">Category:</label>
-            <input
-              type="text"
+            <select
               id="category"
-              value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-            />
+            >
+              <option value="">Select Option</option>
+              {categories?.category?.map((cat) => (
+                <option key={cat.path} value={cat.path}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="price">Price:</label>
@@ -87,38 +99,33 @@ const AddProduct = () => {
               onChange={changeHandler}
             />
           </div>
-          <div className='images-holder'>
-          {
-              imagePreviews.map((src, index) => (
-                <img key={index} src={src} alt={`Preview ${index}`} />
-              ))
-          }
-           </div>   
+          <div className="images-holder">
+            {imagePreviews.map((src, index) => (
+              <img key={index} src={src} alt={`Preview ${index}`} />
+            ))}
+          </div>
           <button type="submit">Add Product</button>
         </form>
       </div>
 
       <div className="preview-container">
         <h2>Product Preview</h2>
-        <div className='product-container'>
-          <div className='product-image-container'>
-          {
-            <img src={imagePreviews[0]?.src} alt={imagePreviews[0]?.src} />
-
-          }
-          <div className='images-holder'>
-            {
-              
-              imagePreviews.map((src, index) => (
+        <div className="product-container">
+          <div className="product-image-container">
+            {<img src={imagePreviews[0]?.src} alt={imagePreviews[0]?.src} />}
+            <div className="images-holder">
+              {imagePreviews.map((src, index) => (
                 <img key={index} src={src} alt={`Preview ${index}`} />
-              ))
-
-            }
-          </div>
+              ))}
+            </div>
           </div>
           <div className="product-info">
             <h1>{name || ""}</h1>
-            {price && <p >Rs : <span className='price'>{ price}</span></p>}
+            {price && (
+              <p>
+                Rs : <span className="price">{price}</span>
+              </p>
+            )}
             <p>{description || ""}</p>
           </div>
         </div>

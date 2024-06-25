@@ -1,0 +1,127 @@
+/* OrderDetailPage.css */
+
+.order-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f9; /* Light background for the entire page */
+  margin-top: 30px;
+}
+
+.order-detail-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333; /* Dark color for the heading */
+  text-align: center;
+}
+
+.order-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.order-info {
+  flex: 1 1 45%;
+}
+
+.order-items {
+  flex: 1 1 50%;
+  background-color: #fff; /* White background for sections */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.order-info > div {
+  background-color: #fff; /* White background for sections */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.order-summary h2,
+.shipping-info h2,
+.order-items h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #007bff; /* Primary theme color */
+}
+
+.order-summary p,
+.shipping-info p,
+.order-item p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555; /* Dark grey text */
+}
+
+.order-items .order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-items .order-item img {
+  width: 100px; /* Fixed size for images */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px; /* Rounded corners for images */
+  margin-right: 20px;
+}
+
+.order-items .order-item .item-details {
+  flex: 1; /* Allow details to take up remaining space */
+}
+
+.order-items .order-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #007bff; /* Primary theme color */
+}
+
+@media (max-width: 768px) {
+  .order-detail-page {
+    /* padding: 10px; */
+    margin-top: 60px;
+    width: 90%;
+    overflow: hidden;
+  }
+
+  .order-detail-container {
+    flex-direction: column;
+  }
+
+  .order-info,
+  .order-items {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .order-items .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-summary h2, .shipping-info h2, .order-items h2 {
+    font-size: 1rem;
+    color: #007bff;
+    text-align: center;
+}
+  .order-items .order-item img {
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .order-items .order-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .order-items .order-item p {
+    font-size: 0.9rem;
+  }
+}

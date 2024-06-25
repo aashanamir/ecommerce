@@ -45,3 +45,31 @@
   justify-content: center;
   box-shadow: 0 0 2px 0 grey;
 }
+
+.btn-container{
+  width: 100%;
+  background-color: white;
+  padding: 38px;
+  margin: auto;
+  border-radius: 18px;
+  box-shadow: 0 0px 4px grey;
+}
+
+.all-products-btn{
+  background-color: #ff6600;
+  display: block;
+  width: 30%;
+  padding: 8px 14px;
+  text-align: center;
+  border-radius: 8px;
+  color: white;
+  margin: auto;
+  border: 2px solid transparent;
+}
+
+.all-products-btn:hover{
+  background-color: #fff;
+  color: #ff6600;
+  border: 2px solid #ff6600;
+
+}

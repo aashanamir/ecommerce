@@ -5,8 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchProducts} from "../../Slice/ProductSlice";
 import Loading from "../../components/Loading";
 import Carousel from "../../components/carusel";
-import CategoryCard from "../../components/category-card"
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   
@@ -22,12 +22,15 @@ const HomePage = () => {
   return productStatus === "loading" ? (
     <Loading />
   ) : (
+
     <div className="home-page">
+
       <Helmet>
       <title>Echo Shop - Home</title>
         <meta name="description" content="Welcome to E-Shop, your one-stop shop for all things great." />
       </Helmet>
-      <CategoryCard />
+
+
       <Carousel />
 
       <section className="product-section">
@@ -37,6 +40,11 @@ const HomePage = () => {
             <ProductCard key={index} product={product} />
           ))}
         </div>
+
+       <div className="btn-container">
+        <Link className="all-products-btn" to={"/products"}>All Products</Link>
+          
+        </div>   
       </section>
     </div>
    

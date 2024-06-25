@@ -1,0 +1,69 @@
+.all-orders-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f4f4f9; /* Light background for the entire page */
+}
+
+.all-orders-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333; /* Dark color for the heading */
+  text-align: center;
+}
+
+.order-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  cursor: pointer;
+}
+
+.order-item {
+  background-color: #fff; /* White background for order items */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.order-item:hover {
+  transform: translateY(-5px); /* Lift on hover */
+}
+
+.order-item h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem; /* Slightly smaller heading */
+  color: #ff3300; /* Primary theme color */
+}
+
+.order-item p {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #555; /* Dark grey text */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .all-orders-page {
+    padding: 10px;
+  }
+
+  .order-list {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .order-item {
+    padding: 15px;
+  }
+
+  .order-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .order-item p {
+    font-size: 0.9rem;
+  }
+}

@@ -14,9 +14,9 @@ router.route("/order/myorders").get( isAuthenticated , myAllOrders);
 
 router.route("/admin/order/allorders").get( isAuthenticated , checkIsAdmin ,  getAllOrdersByAdmin);
 
-router.route("/admin/order/updateorder/:id").get( isAuthenticated , checkIsAdmin ,  updateOrderStatus);
+router.route("/admin/order/updateorder/:id").patch( isAuthenticated , checkIsAdmin ,  updateOrderStatus);
 
-router.route("/admin/order/deleteorder/:id").get( isAuthenticated , checkIsAdmin ,  DeleteOrder);
+router.route("/admin/order/deleteorder/:id").delete( isAuthenticated , checkIsAdmin ,  DeleteOrder);
 
 
 

@@ -12,16 +12,6 @@ const storage = multer.diskStorage({
 })
 
 
-// const storage2 = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './public/images/products');
-//   },
-//   filename: function (req, file, cb) {
-//     const uniqueSuffix = Date.now() + '-' + file.originalname;
-//     cb(null, file.fieldname + '-' + uniqueSuffix)
-//   }
-// })
-
 
 const storage2 = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -33,8 +23,24 @@ const storage2 = multer.diskStorage({
   }
 });
 
+
+const storage3 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/categories');
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + file.originalname;
+    cb(null, file.fieldname + '-' + uniqueSuffix);
+  }
+
+});
+
+
 export const uploadProductImage = multer({ storage: storage2 });
 
 
 export const uploadUserImage = multer({storage : storage});
+
+
+export const uploadCategoryImage = multer({storage : storage3});
 

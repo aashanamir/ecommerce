@@ -8,6 +8,7 @@
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .product-card img {
@@ -20,6 +21,9 @@
 .product-name {
   font-size: 14px;
   margin: 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
@@ -39,4 +43,10 @@
   text-decoration: none;
   border-radius: 8px;
  
+}
+.product-description{
+ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
 }

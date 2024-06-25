@@ -35,7 +35,7 @@ h2 {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea , .form-group select{
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;

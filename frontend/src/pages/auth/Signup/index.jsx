@@ -103,7 +103,7 @@ const Login = () => {
         </div>
         <div className="avatar-cont">
           <img className="avatar" src={filePreview || "https://via.placeholder.com/150"} alt="" />
-          <input type="file" name="file" onChange={handleImage} />
+          <input className='upload-btn' type="file" name="file" onChange={handleImage} />
         </div>
         <button type="submit">Sign Up</button>
       </form>

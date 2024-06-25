@@ -10,6 +10,7 @@ const index = () => {
             <li><Link to="/admin">Dashboard</Link></li>
             <li><Link to="/admin/users">Users</Link></li>
             <li><Link to="/admin/products">Products</Link></li>
+            <li><Link to="/admin/category">Category</Link></li>
             <li><Link to="/admin/orders">Orders</Link></li>
             <li><Link to="/admin/settings">Settings</Link></li>
           </ul>

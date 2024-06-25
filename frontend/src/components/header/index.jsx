@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaOpencart } from 'react-icons/fa';
@@ -42,7 +41,8 @@ const Navbar = () => {
           </div> 
           {profileMenu && <div className="avatar-menu">
             <ul>
-              <li><Link onClick={toggleProfileMenu} to="/profile">Profile</Link></li>
+            <li><Link onClick={toggleProfileMenu} to="/profile">Profile</Link></li>
+            <li><Link onClick={toggleProfileMenu} to="/orders">My Orders</Link></li>
               <li onClick={toggleProfileMenu}><Link onClick={logoutHandler}>Logout</Link></li>
               {userInfo?.role === "admin" && <li><Link onClick={toggleProfileMenu} to="/admin">Dashboard</Link></li>}
             </ul>

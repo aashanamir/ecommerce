@@ -3,6 +3,7 @@ import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASEURL } from '../../API/BaseUrl';
 import { remove, updateQuantity } from "../../Slice/cartSlice";
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const { items } = useSelector(state => state.cart);
@@ -61,7 +62,7 @@ const Index = () => {
         <h2>Cart Summary</h2>
         <p>Total Items: {items.reduce((acc, item) => acc + item.quantity, 0)}</p>
         <p>Total Price: Rs {items.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}</p>
-        <button className="checkout-button">Proceed to Checkout</button>
+        <Link to={"/checkout"} className="checkout-button">Proceed to Checkout</Link>
       </div>
     </div>
   );

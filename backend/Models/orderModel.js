@@ -64,11 +64,11 @@ const schema = new mongoose.Schema({
  paymentInfo : {
   id : {
     type : String,
-    required : true,
+    // required : true,
   },
   status : {
     type : String,
-    required : true,
+    // required : true,
   },
  },
 
@@ -80,21 +80,25 @@ const schema = new mongoose.Schema({
  itemsPrice : {
   type : String,
   required : true,
+  default : 0,
 },
 
 taxPrice : {
   type : String,
   required : true,
+  default : 0,
 },
 
 shippingPrice : {
   type : String,
   required : true,
+  default : 0,
 },
 
 totalPrice : {
   type : String,
   required : true,
+  default : 0,
 },
 
  orderStatus : {
