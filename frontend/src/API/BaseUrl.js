@@ -1,1 +1,1 @@
-export const BASEURL = "http://localhost:5000/";
+export const BASEURL = "https://ecommerce-frontend-five-sigma.vercel.app/";
