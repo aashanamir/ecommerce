@@ -6,7 +6,7 @@ export const connectDb = async ()=>{
       dbName : "Ecommerce"
     });
     console.log("Database Connected Successfully");
-  }catch{
-    console.log("Some Error occured in database connection");
+  }catch(error){
+    console.log("Some Error occured in database connection" , error);
   }
 }
