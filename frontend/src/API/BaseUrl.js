@@ -1,1 +1,1 @@
-export const BASEURL = "https://ecommerce-frontend-five-sigma.vercel.app/";
+export const BASEURL = "https://ecommerce-api-green.vercel.app/";
